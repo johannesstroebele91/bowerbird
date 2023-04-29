@@ -3,7 +3,8 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import { Home } from "./pages/Home";
-import { Report } from "./pages/Report";
+import { Services } from "./pages/Services/Services";
+import { Service } from "./pages/Services/Service";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -15,8 +16,12 @@ const router = createBrowserRouter([
     element: <Home />,
   },
   {
-    path: "/report",
-    element: <Report />,
+    path: "/services",
+    element: <Services />,
+  },
+  {
+    path: "/services/:id",
+    element: <Service />,
   },
 ]);
 

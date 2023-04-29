@@ -11,8 +11,8 @@ const menuItems = [
     label: <Link to={"/"}>Home</Link>,
   },
   {
-    key: "/report",
-    label: <Link to={"/report"}>Report</Link>,
+    key: "/services",
+    label: <Link to={"/services"}>Services</Link>,
   },
 ];
 export const Nav: React.FC<props> = (): JSX.Element => {
