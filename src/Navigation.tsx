@@ -19,7 +19,6 @@ export const Nav: React.FC<props> = (): JSX.Element => {
   const [currentPage, setCurrentPage] = useState("/");
 
   const onClick = (e: any) => {
-    console.log("click ", e);
     setCurrentPage(e.key);
   };
 

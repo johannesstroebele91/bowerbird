@@ -1,5 +1,5 @@
 export interface Service {
-  name: string;
+  serviceName: string;
   dateFrom: string;
   dateUntil: string;
   activities: string[];

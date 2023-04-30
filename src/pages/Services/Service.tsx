@@ -13,13 +13,9 @@ export const Service: React.FC = () => {
   const service: ServiceType = location.state?.service;
   const [isEditable, setIsEditable] = useState(false);
 
-  const onEdit = (edtiable: boolean) => {
-    setIsEditable(edtiable);
-  };
-
   return (
     <AppWrapper>
-      <Title>{service.name}</Title>
+      <Title>{service.serviceName}</Title>
       <List
         bordered
         dataSource={service.activities}
@@ -30,11 +26,16 @@ export const Service: React.FC = () => {
               actions={
                 isEditable
                   ? []
-                  : [<Button onClick={() => onEdit(true)}>edit</Button>]
+                  : [<Button onClick={() => setIsEditable(true)}>edit</Button>]
               }
             >
               {!isEditable && <Paragraph>{activity}</Paragraph>}
-              {isEditable && <NewActivity activity={activity} />}
+              {isEditable && (
+                <NewActivity
+                  activity={activity}
+                  setIsEditable={setIsEditable}
+                />
+              )}
             </List.Item>
           );
         }}

@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { AppWrapper } from "../../Wrapper";
 import { Service } from "../../types";
 
-const columnDefs: ColumnsType<Service> = [
+const columnDefs: ColumnsType<ServiceWithKey> = [
   {
     title: "Name",
     dataIndex: "name",
@@ -29,42 +29,51 @@ const columnDefs: ColumnsType<Service> = [
 
 const services: Service[] = [
   {
-    name: "Splicer Issues 920820",
+    serviceName: "Splicer Issues 920820",
     dateFrom: "Sat Apr 29 2023 20:30:38",
     dateUntil: "Sat Apr 29 2023 20:30:38",
     activities: ["Step 1", "Step 2", "Step 3"],
   },
   {
-    name: "Splicer Issues 72312",
+    serviceName: "Splicer Issues 72312",
     dateFrom: "Sat Apr 29 2023 20:30:38",
     dateUntil: "Sat Apr 29 2023 20:30:38",
     activities: [],
   },
   {
-    name: "Splicer Issues 23152",
+    serviceName: "Splicer Issues 23152",
     dateFrom: "Sat Apr 29 2023 20:30:38",
     dateUntil: "Sat Apr 29 2023 20:30:38",
     activities: ["Step 1", "Step 2", "Step 3"],
   },
   {
-    name: "Splicer Issues 23152",
+    serviceName: "Splicer Issues 23152",
     dateFrom: "Sat Apr 29 2023 20:30:38",
     dateUntil: "Sat Apr 29 2023 20:30:38",
     activities: ["Step 1", "Step 2", "Step 3"],
   },
   {
-    name: "Splicer Issues 23152",
+    serviceName: "Splicer Issues 23152",
     dateFrom: "Sat Apr 29 2023 20:30:38",
     dateUntil: "Sat Apr 29 2023 20:30:38",
     activities: ["Step 1", "Step 2", "Step 3"],
   },
 ];
 
+interface ServiceWithKey extends Service {
+  key: string;
+}
+
+const servicesWithKey = services.map((service, index) => ({
+  ...service,
+  key: `${index}`,
+}));
+
 export const Services: React.FC = () => {
   const navigate = useNavigate();
 
   const handleRowClick = (service: Service) => {
-    navigate("/services/" + service.name.replace(/ /g, ""), {
+    navigate("/services/" + service.serviceName.replace(/ /g, ""), {
       state: { service },
     });
   };
@@ -74,7 +83,7 @@ export const Services: React.FC = () => {
       <Title>Services</Title>
       <Table
         columns={columnDefs}
-        dataSource={services}
+        dataSource={servicesWithKey}
         showHeader={false}
         pagination={false}
         onRow={(service) => ({
